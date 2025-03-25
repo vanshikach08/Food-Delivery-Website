@@ -1,0 +1,57 @@
+/* Set global font and background color */
+body {
+    background-image: url("https://images.pexels.com/photos/7664397/pexels-photo-7664397.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+    background-size: cover;
+	font-family: Arial, sans-serif;
+	background-color: #f8f8f8;
+}
+
+/* Style the page header */
+h1 {
+	text-align: center;
+	margin-top: 50px;
+	font-size: 2em;
+	color: #333;
+}
+
+/* Style the message list container */
+#message-list {
+	margin: 50px auto;
+	padding: 20px;
+	max-width: 600px;
+	background-color: #90897e;
+	border-radius: 5px;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Style each message in the list */
+#message-list p {
+	margin: 10px 0;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: #eee;
+	color: #333;
+	cursor: pointer;
+	transition: background-color 0.3s ease-in-out;
+}
+
+/* Add hover effect to each message */
+#message-list p:hover {
+	background-color: #f8f8f8;
+}
+
+/* Add active effect to each message */
+#message-list p:active {
+	background-color: #ddd;
+}
+
+/* Style the "read" message state */
+#message-list p.read {
+	background-color: #ddd;
+	color: #888;
+}
+
+/* Add hover effect to the "read" message state */
+#message-list p.read:hover {
+	background-color: #ccc;
+}

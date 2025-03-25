@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Delivery Person Messages</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="Del.css">
+</head>
+
+<body>
+	<h1>Delivery Person Messages</h1>
+
+	<div id="message-list">
+		<!-- Messages will be displayed here -->
+		<center>
+			<h2>Order to be picked -
+		</center>
+		<ul id="orders-ready"></ul>
+	</div>
+
+	<script>
+		// Use JavaScript to retrieve messages from a database or API
+		// and display them in the message list
+
+		// Example code using jQuery and the fetch() method
+
+		const orderReady = JSON.parse(localStorage.getItem('orderReady')) || [];
+		console.log(orderReady);
+		// Get the <ul> element by its ID
+		const ordersReadyList = document.getElementById('orders-ready');
+
+		// Loop through the list of order ready items and create <li> elements for each item
+		orderReady.forEach(itemName => {
+			const li = document.createElement('li');
+
+			li.textContent = itemName;
+			ordersReadyList.appendChild(li);
+			const button = document.createElement('button');
+			button.textContent = 'Remove';
+			button.addEventListener('click', () => {
+				const index = orderReady.indexOf(itemName);
+				if (index !== -1) {
+					orderReady.splice(index, 1);
+					localStorage.setItem('orderReady', JSON.stringify(orderReady));
+					li.remove();
+				}
+			});
+
+			li.appendChild(button);
+			ordersReadyList.appendChild(li);
+		});
+	</script>
+</body>
+
+</html>

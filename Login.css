@@ -1,0 +1,118 @@
+
+  body {
+    background-image: url("https://img.freepik.com/free-photo/vintage-old-rustic-cutlery-dark_1220-4886.jpg?size=626&ext=jpg&uid=R101394332&ga=GA1.2.905724116.1682970302&semt=robertav1_2_sidr");
+    background-size: cover;
+  }
+  
+  .container {
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    /* background-color: #ffffff;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 36px;
+    color: #ffffff;
+    margin-bottom: 30px;
+  }
+  
+  .toggle-button {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  
+  .toggle-button label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-radius: 50px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .toggle-button input[type="radio"] {
+    display: none;
+  }
+  
+  .toggle-button input[type="radio"]:checked + label {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  form {
+    /* background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px; */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input[type="email"],
+  input[type="password"]
+  {
+    
+    padding: 10px;
+  color: #020202;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.5); /* set the background color with some opacity */
+  backdrop-filter: blur(10px); /* add a blur effect to the background */
+  
+}
+  
+  
+  input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .login {
+    background-color: #ffffff;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .login:hover {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  select {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  #additional-fields {
+    display: none;
+  }
+  
+ 

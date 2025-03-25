@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+    
+    <head>
+        <title>Sign Up</title>
+        <link rel="stylesheet" type="text/css" href="snlogn.css">
+    </head>
+    
+    <body>
+        <div class="container">
+        <h2>Sign Up</h2>
+        <div class="toggle-button">
+            <input type="radio" id="customer" name="toggle" value="customer" onclick="resetForm();">
+            <label for="customer">Customer</label>
+            <input type="radio" id="chef" name="toggle" value="chef" onclick="resetForm(); showAdditionalFields();">
+            <label for="chef">Chef</label>
+            <input type="radio" id="delivery" name="toggle" value="delivery"
+            onclick="resetForm(); showAdditionalFields();">
+            <label for="delivery">Delivery Person</label>
+        </div>
+        <form id="signup-form" action="signup.php" method="post">
+            <label>
+                <input type="text" name="firstname" placeholder="First Name" required>
+            </label>
+            <input type="text" name="lastname" placeholder="Last Name">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <!-- <input type="text" name="address" placeholder="State"> -->
+            
+            <div id="additional-fields" style="display: none;">
+                <input type="text" name="post" placeholder="Post">
+            </div>
+            <input type="submit" value="Sign Up">
+        </form>
+        <a href="./login.html" class="button"></a>
+        
+        <br>
+        <a href="./loginchef.html">
+            <button class="login" id="login">
+                Login as
+            </button>
+        </a>
+        <select name="login" id="login">
+            <option value="cus">Customer <a href=""></a></option>
+            <option value="ch">chef</option>
+            <option value="dp">delivery person</option>
+        </select>
+    </div>
+</body>
+
+</html>
+            <script>
+               function resetForm() {
+                   document.getElementById("signup-form").reset();
+                   document.getElementById("additional-fields").style.display = "none";
+               }
+               function showAdditionalFields() {
+                   document.getElementById("additional-fields").style.display = "block";
+               }
+               function showSignInForm() {
+                   window.location.href = "login.html";
+               }
+           </script> 

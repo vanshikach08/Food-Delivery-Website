@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="Signup.css">
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <h2>Sign Up as</h2>  
+        <form id="signup-form" action="signup.php" method="post">          
+            <center>
+            <input type="text" name="firstname" placeholder="First Name" id="Fname" required>
+            <input type="text" name="lastname" placeholder="Last Name" id="Lname">
+            <input type="email" name="email" placeholder="Email" id="email" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required id="tel">
+            <input type="password" name="password" placeholder="password" id="psw" required>
+
+            <div id="additional-fields" style="display: none;">
+                <input type="text" name="post" placeholder="Post">
+            </div>
+        </center>
+        </form>
+        <br>
+        <center>
+            <span>
+                <a href="sel_Res.html">
+                    <button class="login" id="sumbitData">
+                        <h3>Signup as Customer</h3>
+                    </button>
+                </a>
+
+            </span>
+            <span class="1">
+                <a href="sel_Res_chef.html">
+                    <button class="login" id="sumbitData">
+                        <h3>Signup as as Chef</h3>
+                    </button>
+                </a>
+            </span>
+            <span>
+                <a href="Del.html">
+                    <button class="login" id="sumbitData">
+                        <h3>Signup as Delivery Person</h3>
+                    </button>
+                </a>
+            </span>
+        </center>     
+    </div>
+    <center>
+
+    <div >
+        <a href="Login.html">
+                <h3 style="color: white;">Already have an account ? Log in</h3>
+        </a>
+    </div>
+</center>
+</body>
+
+
+</html>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+    
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyCKTU6OoLhke_c7DLth4AisjJwYHWNRlVA",
+        authDomain: "authentication-5e338.firebaseapp.com",
+        projectId: "authentication-5e338",
+        storageBucket: "authentication-5e338.appspot.com",
+        messagingSenderId: "714090149617",
+        appId: "1:714090149617:web:f979e5fc2a3eacf9c29b50"
+    };
+    
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+    
+    sumbitData.addEventListener('click',(e)=>{
+        
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            // ...user.uid
+            alert('user created succesfully');
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // ..
+            alert(errorMessage)
+        });
+        
+    });
+    
+    
+    
+    
+    
+    
+</script>
+
+<!-- <script>
+
+    
+    function resetForm() {
+        document.getElementById("signup-form").reset();
+        document.getElementById("additional-fields").style.display = "none";
+    }
+    function showAdditionalFields() {
+        document.getElementById("additional-fields").style.display = "block";
+    }
+    function showSignInForm() {
+        window.location.href = "login.html";
+    }
+</script> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getAuth , GoogleAuthProvider , signInWithRedirect , getRedirectResult} from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+    
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAKfgdUX2KrMo8O3aY_k5zlx25a7TXBm30",
+      authDomain: "food-delivery-a51b1.firebaseapp.com",
+      projectId: "food-delivery-a51b1",
+      storageBucket: "food-delivery-a51b1.appspot.com",
+      messagingSenderId: "302006585169",
+      appId: "1:302006585169:web:0c0e43a6d796b3a0243570"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider(app);
+
+    login.addEventListener('click', (e) => {
+    signInWithRedirect (auth, provider)
+
+    getRedirectResult(auth)
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access Google APIs.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+
+    // The signed-in user info.
+    const user = result.user;
+    // IdP data available using getAdditionalUserInfo(result)
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
+
+    });
+
+
+  </script> -->

@@ -1,0 +1,154 @@
+ Global Styles
+ {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+header {
+  background-image: url("https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+}
+
+header h1 {
+  font-size: 4rem;
+  color: #050202;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav li {
+  margin-right: 2rem;
+  
+}
+
+nav a {
+  color: #070404;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  color: #f6da01;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+ 
+}
+
+#menu {
+  margin-bottom: 4rem;
+  
+}
+
+#menu h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+#menu li {
+  list-style: none;
+  margin-bottom: 2rem;
+  border: 1px solid #d1cd88;
+  padding: 1rem;
+  position: relative left;
+}
+
+#menu li:hover {
+  background-color: #77d966;
+}
+
+#menu li:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background-image: url("menu-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+}
+
+#menu h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+#menu p {
+  margin-bottom: 1rem;
+}
+
+.add-to-cart {
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-to-cart:hover {
+  background-color: #e0b70f;
+}
+
+#cart {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 300px;
+  background-color: #ffffff;
+  overflow-y: scroll;
+}
+
+#cart h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  
+}
+
+#cart-items li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+#cart-items li button {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+} 
+ 

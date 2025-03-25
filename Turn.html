@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>TurnTrip Restaurant</title>
+	<link rel="stylesheet" href="Turn.css">
+</head>
+
+<body>
+	<header>
+		<h1>TurnTrip Restaurant</h1>
+		
+	</header>
+	<main>
+		<section id="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li>
+					<span>
+					<img src="https://img.freepik.com/free-photo/side-lamb-ragout-with-fried-onion-carrot-tomato-sauce-greens-vegetable-salad-table_141793-4744.jpg?size=626&ext=jpg&uid=R101394332&ga=GA1.2.905724116.1682970302&semt=ais" width="300" height="200"> 
+			
+					<h3>Indian Special Thali</h3>
+					<p>Consists of rice, dal, vegetable curries, papad, and yogurt. </p>
+					<button class="add-to-cart">Add to Cart</button>
+				</span>
+				</li>
+				<li>
+					<img src="https://img.freepik.com/free-photo/top-view-indian-food-assortment_23-2148747714.jpg?size=626&ext=jpg&uid=R101394332&ga=GA1.2.905724116.1682970302&semt=ais" width="300" height="200">
+					<h3>South Indian Dosa</h3>
+					<p>A thin and crispy crepe made from fermented rice and lentil batter, served with sambar and
+						chutney. </p>
+					<button class="add-to-cart">Add to Cart</button>
+				</li>
+				<li>
+					<img src="https://img.freepik.com/free-photo/side-view-deep-fried-fish-fillet-with-red-onion-sauce-slice-lemon-plate_141793-4876.jpg?size=626&ext=jpg&uid=R101394332&ga=GA1.2.905724116.1682970302&semt=ais" width="300" height="200">
+					<h3>Tandoori Chicken</h3>
+					<p>Marinated chicken roasted in a clay oven, served with mint chutney. </p>
+					<button class="add-to-cart">Add to Cart</button>
+				</li>
+				<li>
+					<img src="https://img.freepik.com/free-photo/top-view-bowls-cooked-pasta-with-salads-fried-vegetables-table_181624-30115.jpg?size=626&ext=jpg&uid=R101394332&ga=GA1.2.905724116.1682970302&semt=ais"width="300" height="200">
+					<h3>Pizza Margherita</h3>
+					<p>A classic pizza topped with tomato sauce, mozzarella cheese, and fresh basil. </p>
+					<button class="add-to-cart">Add to Cart</button>
+				</li>
+				<li>
+					<img src="https://img.freepik.com/free-photo/selection-indian-food-including-chicken-curry-other-spices_1340-23307.jpg?size=626&ext=jpg&uid=R101394332&ga=GA1.2.905724116.1682970302&semt=ais"width="300" height="200">
+					<h3>Pasta Carbonara</h3>
+					<p>Pasta with bacon, eggs, and Parmesan cheese. </p>
+
+					<button class="add-to-cart">Add to Cart</button>
+				</li>
+			</ul>
+		</section>
+		<section id="cart">
+			<h2>Cart</h2>
+			<ul id="cart-items">
+				<!-- cart items will be added dynamically using JavaScript -->
+			</ul>
+			<p>Total: <span class="cart-total">0</span></p>
+			<button id="checkout">Checkout</button>
+			<button onclick="clearCart()">Clear cart</button>
+		</section>
+	</main>
+	
+
+	<script src="script.js"></script>
+</body>
+
+</html>
+
+
+
+<script>
+	// Get the "Add to Cart" buttons
+	const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+	// Get the cart items element
+	const cartItems = document.getElementById('cart-items');
+
+	// Get the cart total element
+	const cartTotal = document.getElementById('cart-total');
+
+	// Initialize the cart array
+	let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+	// Add an event listener to each "Add to Cart" button
+	addToCartButtons.forEach((button, index) => {
+		button.addEventListener('click', () => {
+			// Get the item details
+			const item = button.parentNode;
+			const itemName = item.querySelector('h3').textContent;
+			const itemPrice = 10; // replace with actual price of item
+			const itemQuantity = 1;
+
+			// Check if the item is already in the cart
+			const existingItemIndex = cart.findIndex((cartItem) => cartItem.name === itemName);
+			if (existingItemIndex !== -1) {
+				// If the item is already in the cart, update its quantity
+				cart[existingItemIndex].quantity += itemQuantity;
+			} else {
+				// If the item is not in the cart, add it to the cart
+				cart.push({ name: itemName, price: itemPrice, quantity: itemQuantity });
+			}
+			localStorage.setItem('cart', JSON.stringify(cart));
+
+			// Update the cart items element and cart total element
+			cartItems.innerHTML = '';
+			cart.forEach((cartItem) => {
+				const itemHTML = `<li>${cartItem.name} x ${cartItem.quantity} - $${cartItem.price * cartItem.quantity}</li>`;
+				cartItems.innerHTML += itemHTML;
+			});
+			cartTotal.textContent = cart.reduce((total, cartItem) => total + (cartItem.price * cartItem.quantity), 0);
+		});
+	});
+	function clearCart(){
+		localStorage.removeItem('cart')
+		cartItems.innerHTML = ''
+	}
+// Retrieve the cart from local storage and display it
+const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+storedCart.forEach((cartItem) => {
+  const itemHTML = `<li>${cartItem.name} x ${cartItem.quantity} - $${cartItem.price * cartItem.quantity}</li>`;
+  cartItems.innerHTML += itemHTML;
+});
+cartTotal.textContent = storedCart.reduce((total, cartItem) => total + (cartItem.price * cartItem.quantity), 0);
+</script>

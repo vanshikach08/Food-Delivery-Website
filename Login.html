@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="Login.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Login </h2>   
+        <div>
+            <center>         
+                <form id="signup-form">  
+                    <center>                  
+                    <input type="email" name="Email" placeholder="Email">
+                    <input type="password" name="Password" placeholder="Password" >
+                    <br>                   
+                    <div id="additional-fields" style="display: none;">     
+                    </center>      
+                    </div>                   
+                    <center>
+                        <span>     
+                            <a href="sel_Res.html">                
+                                <button class="login" id="login" type="button" onclick="resetForm(); ">
+                                    <h3>Login as Customer</h3>
+                                </button>
+                            </a>                   
+                        </span>
+                        <span >  
+                            <a href="chef1.html">                          
+                                <button class="login" id="login" type="button" onclick="resetForm();showAdditionalFields();">
+                                    <h3>Login as Chef</h3>
+                                </button>
+                            </a>
+                        </span>
+                        <span>       
+                            <a href="Del.html">                 
+                                   <button class="login" id="login" type="button" onclick="resetForm();showAdditionalFields();">
+                                    <h3>Login as Delivery Person</h3>
+                                </button>
+                            </a>
+                        </span>
+                    </center>
+                </form>
+                
+                <br>
+            </center>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function resetForm() {
+        document.getElementById("signup-form").reset();
+        document.getElementById("additional-fields").style.display = "none";
+    }
+    function showAdditionalFields() {
+        document.getElementById("additional-fields").style.display = "block";
+    }
+    function showSignInForm() {
+        window.location.href = "login.html";
+    }
+</script>

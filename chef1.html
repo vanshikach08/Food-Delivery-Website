@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Turntrip Restaurant Chef Interface</title>
+  <link rel="stylesheet" href="chef1.css">
+</head>
+
+<body>
+  <h1>Turntrip Restaurant Chef Interface</h1>
+
+
+
+  <form action="">
+    <!-- Messages will be displayed here -->
+    <center>
+      <h2>Orders to Prepare</h2>
+      <ul id="cart-items"></ul>
+    </center>
+  </form>
+  <br><br><br><br>
+  <center>
+    <h2>Food Items</h2>
+  </center>
+  <ul>
+    <li>
+      <span>Burger:</span>
+      <span>Rs<span id="burger-price"> 100.00</span></span>
+      <button onclick="increasePrice('burger')">+</button>
+      <button onclick="decreasePrice('burger')">-</button>
+    </li>
+    <li>
+      <span>Pizza:</span>
+      <span>$<span id="pizza-price">15.00</span></span>
+      <button onclick="increasePrice('pizza')">+</button>
+      <button onclick="decreasePrice('pizza')">-</button>
+    </li>
+    <li>
+      <span>Salad:</span>
+      <span>$<span id="salad-price">8.00</span></span>
+      <button onclick="increasePrice('salad')">+</button>
+      <button onclick="decreasePrice('salad')">-</button>
+    </li>
+  </ul>
+  <br><br><br>
+  <center>
+    <h2>Add New Item</h2>
+    <label for="item-name">Item Name:</label><br>
+    <input type="text" id="item-name"><br>
+    <br>
+    <label for="item-price">Item Price:</label><br>
+    <input type="number" id="item-price"><br>
+    <br>
+    <button onclick="addNewItem()">Add Item</button>
+  </center>
+</body>
+
+</html>
+<script>
+  function increasePrice(item) {
+    var price = document.getElementById(item + "-price").innerHTML;
+    price = parseFloat(price) + 1.00;
+    document.getElementById(item + "-price").innerHTML = price.toFixed(2);
+  }
+
+  function decreasePrice(item) {
+    var price = document.getElementById(item + "-price").innerHTML;
+    price = parseFloat(price) - 1.00;
+    if (price < 0) {
+      price = 0;
+    }
+    document.getElementById(item + "-price").innerHTML = price.toFixed(2);
+  }
+
+  function addNewItem() {
+    var item = document.getElementById("item-name").value;
+    var price = document.getElementById("item-price").value;
+    if (item && price) {
+      var ul = document.getElementsByTagName("ul")[0];
+      var li = document.createElement("li");
+      var span1 = document.createElement("span");
+      var span2 = document.createElement("span");
+      var button1 = document.createElement("button");
+      var button2 = document.createElement("button");
+      span1.innerHTML = item + ":";
+      span2.innerHTML = "$" + price;
+      button1.innerHTML = "+";
+      button1.setAttribute("onclick", "increasePrice('" + item + "')");
+      button2.innerHTML = "-";
+      button2.setAttribute("onclick", "decreasePrice('" + item + "')");
+      li.appendChild(span1);
+      li.appendChild(span2);
+      li.appendChild(button1);
+      li.appendChild(button2);
+      ul.appendChild(li);
+      document.getElementById("item-name").value = "";
+      document.getElementById("item-price").value = "";
+    } else {
+      alert("Please enter both item name and price.");
+    }
+  }
+
+  // .............................................
+  // Retrieve the cart array from local storage
+const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  // Update the cart items element and cart total element
+  const cartItems = document.getElementById('cart-items');
+// Update the cart items element and cart total element
+cartItems.innerHTML = '';
+cart.forEach((cartItem) => {
+  const itemHTML = `
+    <li>
+      ${cartItem.name} x ${cartItem.quantity} - $${cartItem.price * cartItem.quantity}
+      <button onclick="markOrderReady('${cartItem.name}')">Order Ready</button>
+    </li>
+  `;
+  cartItems.innerHTML += itemHTML;
+});
+function markOrderReady(itemName) {
+  const orderReady = JSON.parse(localStorage.getItem('orderReady')) || [];
+  if (!orderReady.includes(itemName)) {
+    orderReady.push(itemName);
+    localStorage.setItem('orderReady', JSON.stringify(orderReady));
+  }
+}
+
+// ...........................................
+
+
+</script>
